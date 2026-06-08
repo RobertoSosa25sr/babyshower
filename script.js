@@ -123,4 +123,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+    // Wait for all images to load (or timeout) before removing the loading spinner
+    function waitForImages(timeout = 8000) {
+        const imgs = Array.from(document.images || []);
+
+        if (imgs.length === 0) {
+            return Promise.resolve();
+        }
+
+        const loadPromises = imgs.map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(resolve => {
+                img.addEventListener('load', resolve, { once: true });
+                img.addEventListener('error', resolve, { once: true });
+            });
+        });
+
+        const allLoaded = Promise.allSettled(loadPromises);
+        const timer = new Promise(resolve => setTimeout(resolve, timeout));
+
+        return Promise.race([allLoaded, timer]);
+    }
+
+    waitForImages(8000).then(() => {
+        const spinner = document.getElementById('page-spinner');
+        document.body.classList.remove('loading');
+
+        if (spinner) {
+            spinner.style.transition = 'opacity 0.35s ease';
+            spinner.style.opacity = '0';
+            setTimeout(() => {
+                if (spinner && spinner.parentNode) spinner.parentNode.removeChild(spinner);
+            }, 400);
+        }
+    });
+
 });
