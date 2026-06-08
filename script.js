@@ -68,13 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         mapButton.addEventListener("click", () => {
 
-            window.open(
-                "https://www.google.com/maps/place/0%C2%B018'16.9%22S+78%C2%B029'46.2%22W/@-0.3047037,-78.4987526,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-0.3047037!4d-78.4961777?hl=es&entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D",
-                "_blank",
-                "noopener,noreferrer"
-            );
+    window.location.href =
+        "https://www.google.com/maps/search/?api=1&query=-0.3047037,-78.4961777";
 
-        });
+});
 
     }
 
