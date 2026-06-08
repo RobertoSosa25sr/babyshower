@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
         1000
     );
 
+    }
+
     const bees = document.querySelectorAll(".bee");
 
     bees.forEach((bee, index) => {
