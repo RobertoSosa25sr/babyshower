@@ -62,30 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         1000
     );
 
-    const mapButton = document.getElementById("open-maps");
-
-    if (mapButton) {
-
-       mapButton.addEventListener("click", () => {
-
-    const a = document.createElement("a");
-
-    a.href = "https://maps.google.com/?q=-0.3047037,-78.4961777";
-
-    a.target = "_blank";
-
-    document.body.appendChild(a);
-
-    a.click();
-
-    a.remove();
-
-});
-
-});
-
-    }
-
     const bees = document.querySelectorAll(".bee");
 
     bees.forEach((bee, index) => {
