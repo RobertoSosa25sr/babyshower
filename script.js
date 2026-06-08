@@ -66,10 +66,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (mapButton) {
 
-        mapButton.addEventListener("click", () => {
+       mapButton.addEventListener("click", () => {
 
-    window.location.href =
-        "https://www.google.com/maps/search/?api=1&query=-0.3047037,-78.4961777";
+    const a = document.createElement("a");
+
+    a.href = "https://maps.google.com/?q=-0.3047037,-78.4961777";
+
+    a.target = "_blank";
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    a.remove();
+
+});
 
 });
 
